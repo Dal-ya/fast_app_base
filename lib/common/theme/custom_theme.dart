@@ -21,6 +21,7 @@ enum CustomTheme {
   final AbsThemeShadows appShadows;
 
   ThemeData get themeData {
+    return darkTheme;
     switch (this) {
       case CustomTheme.dark:
         return darkTheme;

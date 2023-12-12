@@ -36,6 +36,8 @@ class MainScreenState extends State<MainScreen>
 
   static double get bottomNavigationBarBorderRadius => 30.0;
 
+  static const double bottomNavigatorHeight = 50;
+
   @override
   FutureOr<void> afterFirstLayout(BuildContext context) {
     // 로그인 등 초기에 필요한 작업이 있다면 여기서 처리
@@ -55,19 +57,21 @@ class MainScreenState extends State<MainScreen>
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: _handleBackPressed,
-      child: Scaffold(
-        extendBody: extendBody, //bottomNavigationBar 아래 영역 까지 그림
-        drawer: const MenuDrawer(),
-        body: Container(
-          color: context.appColors.seedColor.getMaterialColorValues[200],
-          padding: EdgeInsets.only(
-              bottom: extendBody ? 60 - bottomNavigationBarBorderRadius : 0),
-          child: SafeArea(
-            bottom: !extendBody,
-            child: pages,
+      child: SafeArea(
+        child: Scaffold(
+          extendBody: extendBody, //bottomNavigationBar 아래 영역 까지 그림
+          drawer: const MenuDrawer(),
+          body: Container(
+            color: context.appColors.seedColor.getMaterialColorValues[200],
+            padding: EdgeInsets.only(
+                bottom: extendBody ? 60 - bottomNavigationBarBorderRadius : 0),
+            child: SafeArea(
+              bottom: !extendBody,
+              child: pages,
+            ),
           ),
+          bottomNavigationBar: _buildBottomNavigationBar(context),
         ),
-        bottomNavigationBar: _buildBottomNavigationBar(context),
       ),
     );
   }
@@ -112,7 +116,7 @@ class MainScreenState extends State<MainScreen>
         child: BottomNavigationBar(
           items: navigationBarItems(context),
           currentIndex: _currentIndex,
-          selectedItemColor: context.appColors.text,
+          selectedItemColor: context.appColors.label,
           unselectedItemColor: context.appColors.iconButtonInactivate,
           onTap: _handleOnTapNavigationBarItem,
           showSelectedLabels: true,
