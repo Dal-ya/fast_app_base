@@ -43,7 +43,7 @@ class AppState extends State<App> with Nav, WidgetsBindingObserver {
           localizationsDelegates: context.localizationDelegates,
           supportedLocales: context.supportedLocales,
           locale: context.locale,
-          title: 'Image Finder',
+          title: 'MyFlutterApp',
           theme: context.themeType.themeData,
           home: const MainScreen(),
         );
