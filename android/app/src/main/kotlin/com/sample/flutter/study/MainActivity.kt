@@ -1,4 +1,4 @@
-package com.new.sample.fast
+package com.sample.flutter.study
 
 import io.flutter.embedding.android.FlutterActivity
 
